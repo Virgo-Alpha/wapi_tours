@@ -7,15 +7,14 @@ function Page404() {
   return (
     // Code for the App
     
-    <div className="App">
-      <Nav />
-      <header className="App-header">
-        
+    <div className="App-header">
         <h1>
-          Page Not Found
+          WAPITOURS
         </h1>
-        </header>
-      <Footer />
+        <h2>
+          Let us help you explore...
+        </h2>
+        <button>Color</button>
     </div>
   );
 }

@@ -8,19 +8,13 @@ function Contact() {
   return (
     // Code for the App
     
-    <div className="App">
-      <Nav />
-      <header className="App-header">
-        
+    <div className="App-header">
         <h1>
           WAPITOURS
         </h1>
         <h2>
           Let us help you explore...
         </h2>
-        <button>Color</button>
-      </header>
-      <Footer />
     </div>
   );
 }
