@@ -117,3 +117,12 @@ main Link, a {
     transform: rotate(360deg);
   }
 }
+
+@media screen and (max-width: 1024px) {
+  #searchButton {
+    border-radius: 15px;
+    padding: 15px 50px;
+    background-color: black;
+    margin-top: 50px;
+  }
+}

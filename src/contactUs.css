@@ -1,0 +1,35 @@
+form {
+    max-width: 50%;
+    margin: auto 0;
+    padding: 100px;
+    border-radius: 25px;
+    background-color: rgb(9, 136, 119);
+    border: 1px solid #000000;
+    color: #000000;
+}
+
+input {
+    height: 25px;
+}
+
+textarea {
+    height: 100px;
+    width: 300px;
+}
+
+@media screen and (max-width: 1024px) {
+    form {
+        max-width: 50%;
+        margin: auto 0;
+        padding: 50px;
+        border-radius: 25px;
+        background-color: rgb(9, 136, 119);
+        border: 1px solid #000000;
+        color: #000000;
+    }
+
+    textarea {
+        height: 200px;
+        width: 200px;
+    }
+  }

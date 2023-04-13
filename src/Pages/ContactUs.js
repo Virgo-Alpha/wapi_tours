@@ -1,4 +1,5 @@
 import './../App.css';
+import './../contactUs.css';
 import { useState } from "react";
 
 
@@ -10,10 +11,13 @@ function MyForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     alert(`Thank you for your email, ${email}!`);
+    setEmail("");
+    setSubject("");
+    setTextarea("");
   }
 
   const [textarea, setTextarea] = useState(
-    "Type your message here..."
+
   );
 
   const handleChange = (event) => {
@@ -22,27 +26,33 @@ function MyForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>Enter your email:
+      <label>Your Email address:
         <input 
-          type="text" 
+          type="text"
+          required  
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
       </label>
-      <br></br>
+
       <br></br>
       <br></br>
       <label>Enter your Subject:
         <input 
-          type="text" 
+          type="text"
+          required
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
         />
       </label>
+
       <br></br>
       <br></br>
-      <br></br>
-      <textarea value={textarea} onChange={handleChange} />
+      <textarea 
+      required 
+      value={textarea} 
+      placeholder="Type your message here..."
+      onChange={handleChange} />
       
       <br></br>
       <input type="submit" />
