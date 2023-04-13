@@ -1,7 +1,4 @@
-//  import logo from './logo.svg';
 import './../App.css';
-import Nav from './Home'
-import Footer from './Home'
 
 function Page404() {
   return (

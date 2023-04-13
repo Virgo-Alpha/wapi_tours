@@ -1,4 +1,3 @@
-//  import logo from './logo.svg';
 import './../App.css';
 import { Link } from 'react-router-dom';
 
@@ -12,7 +11,7 @@ function Home() {
         <h2>
           Let us help you explore...
         </h2>
-        <button>Color</button>
+        <button id='searchButton'><Link to="search">Search</Link></button>
     </div>
   );
 }

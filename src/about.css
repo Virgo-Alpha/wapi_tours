@@ -1,0 +1,52 @@
+#me {
+    padding: 0 50px;
+    width: 320px;
+    height:320px;
+    border-radius: 50%;
+}
+
+#tweet {
+    margin: auto;
+    width: 50%;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    font-size: larger;
+}
+
+.flex-container > div {
+    margin: 10px;
+    padding: 10px 100px 10px 2px;
+}
+
+
+@media screen and (max-width: 1024px) {
+    #tweet {
+        margin: auto;
+        width: 75%;
+    }
+
+    #me {
+        padding: 0;
+        width: 320px;
+        height:320px;
+        border-radius: 50%;
+    }
+
+    .flex-container {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        font-size: large;
+        align-items: center;
+    }
+
+    .flex-container > div {
+        margin: 10px;
+        padding: 15px;
+    }
+
+}

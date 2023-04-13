@@ -98,6 +98,17 @@ footer a {
   color: #61dafb;
 }
 
+#searchButton {
+  border-radius: 15px;
+  padding: 25px 250px;
+  background-color: black;
+  margin-top: 50px;
+}
+
+main Link, a {
+  text-decoration: none;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
