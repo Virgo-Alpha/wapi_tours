@@ -3,8 +3,7 @@ import './../App.css';
 import Nav from './Home'
 import Footer from './Home'
 
-
-function Contact() {
+function Page404() {
   return (
     // Code for the App
     
@@ -13,16 +12,12 @@ function Contact() {
       <header className="App-header">
         
         <h1>
-          WAPITOURS
+          Page Not Found
         </h1>
-        <h2>
-          Let us help you explore...
-        </h2>
-        <button>Color</button>
-      </header>
+        </header>
       <Footer />
     </div>
   );
 }
 
-export default Contact;
+export default Page404;

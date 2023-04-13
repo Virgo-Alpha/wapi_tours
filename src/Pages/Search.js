@@ -3,8 +3,7 @@ import './../App.css';
 import Nav from './Home'
 import Footer from './Home'
 
-
-function Contact() {
+function Search() {
   return (
     // Code for the App
     
@@ -18,11 +17,10 @@ function Contact() {
         <h2>
           Let us help you explore...
         </h2>
-        <button>Color</button>
       </header>
       <Footer />
     </div>
   );
 }
 
-export default Contact;
+export default Search;

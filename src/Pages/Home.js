@@ -16,6 +16,7 @@ function Home() {
         <h2>
           Let us help you explore...
         </h2>
+        <button><Link to="/Search">Search</Link></button>
       </header>
       <footer>
       <Footer />
@@ -30,6 +31,7 @@ function Nav() {
     <ul>
       <li><Link to="/">Home</Link></li>
       <li><Link to="/AboutUs">About Us</Link></li>
+      <li><Link to="/Search">Search</Link></li>
       <li id="right"><Link to="/ContactUs">Contact Us</Link></li>
     </ul>
   )
