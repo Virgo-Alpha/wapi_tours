@@ -1,12 +1,12 @@
 import './../App.css';
+import '../results.css'
 import GetApiResults2 from '../Components/getAPIResults2';
 
-export const CityResults = ({city}) =>  {
+export const CityResults = ({citySearch}) =>  {
   return (
-    // Code for the App
     
     <div className="App-header">
-      <GetApiResults2 city={{city}}/>
+      <GetApiResults2 citySearch={{citySearch}}/>
     </div>
   );
 }

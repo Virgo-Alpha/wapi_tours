@@ -24,7 +24,7 @@ import RootLayout from './layouts/RootLayouts';
 function App() {
 
   const [countrySearch, setCountrysearch] = useState({});
-  const [city, setCity] = useState({});
+  const [citySearch, setCitysearch] = useState({});
   
   const router = createBrowserRouter(
   
@@ -32,10 +32,10 @@ function App() {
       <Route path="/" element={<RootLayout />} >
           <Route index element={<Home />} />
             <Route path="about" element={<About />} />
-            <Route path="search" element={<Search setCountrysearch={setCountrysearch}/>} />
+            <Route path="search" element={<Search setCountrysearch={setCountrysearch} setCitysearch={setCitysearch}/>} />
             <Route path="contacts" element={<Contact />} />
             <Route path="results" element={<Results countrySearch={countrySearch}/>} />
-            <Route path="cityresults" element={<CityResults city={city}/>} />
+            <Route path="cityresults" element={<CityResults citySearch={citySearch}/>} />
           </Route>
     )
   );

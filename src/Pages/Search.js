@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 
 
-export const Search = ({setCountrysearch}) => {  
+export const Search = ({setCountrysearch, setCitysearch}) => {  
 
   // Form to get the API parameters
   function ThisForm() {
@@ -24,6 +24,7 @@ export const Search = ({setCountrysearch}) => {
       }
       // navigate('/results')
       else if (city !== "") {
+        setCitysearch({city});
         navigate('/cityresults')
       }
       else {
