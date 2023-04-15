@@ -5,31 +5,41 @@ import {
   createRoutesFromElements,
   RouterProvider
 } from 'react-router-dom';
+import { useState } from 'react';
+
 // My pages
 import Home from './Pages/Home';
 import About from './Pages/About';
 import Contact from './Pages/ContactUs';
 import Search from './Pages/Search';
-import Page404 from './Pages/Page404';
+import Results from './Pages/results';
+import CityResults from './Pages/CityResults';
 
 // My layouts
 import RootLayout from './layouts/RootLayouts';
 // import Nav from './Pages/Home';
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<RootLayout />} >
-        <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="search" element={<Search />} />
-          <Route path="contacts" element={<Contact />} />
-          <Route component={<Page404 />} />
-        
-        </Route>
-  )
-);
+
 
 function App() {
+
+  const [countrySearch, setCountrysearch] = useState({});
+  const [city, setCity] = useState({});
+  
+  const router = createBrowserRouter(
+  
+    createRoutesFromElements(
+      <Route path="/" element={<RootLayout />} >
+          <Route index element={<Home />} />
+            <Route path="about" element={<About />} />
+            <Route path="search" element={<Search setCountrysearch={setCountrysearch}/>} />
+            <Route path="contacts" element={<Contact />} />
+            <Route path="results" element={<Results countrySearch={countrySearch}/>} />
+            <Route path="cityresults" element={<CityResults city={city}/>} />
+          </Route>
+    )
+  );
+
   return (
     <RouterProvider router={router} />
   );

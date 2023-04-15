@@ -12,7 +12,7 @@ function About() {
         </h1>
         <article id="Founder">
             
-            <div class="flex-container">
+            <div className="flex-container">
             <div><img id="me" src={Myself} alt="me face"></img>
 
             </div>
