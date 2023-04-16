@@ -35,7 +35,7 @@ function App() {
             <Route path="search" element={<Search setCountrysearch={setCountrysearch} setCitysearch={setCitysearch}/>} />
             <Route path="contacts" element={<Contact />} />
             <Route path="results" element={<Results countrySearch={countrySearch}/>} />
-            <Route path="cityresults" element={<CityResults citySearch={citySearch}/>} />
+            <Route path="cityresults" element={<CityResults citySearch={citySearch} countrySearch={countrySearch}/>} />
           </Route>
     )
   );

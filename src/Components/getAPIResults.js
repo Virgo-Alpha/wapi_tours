@@ -72,7 +72,6 @@ export const GetApiResults = ({countrySearch}) => {
                 <br></br>
                 <img src={flag} alt="flag" />
             </p>
-            
             <p>
             Capital City: {capital}
             </p>

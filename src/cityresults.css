@@ -1,18 +1,42 @@
-#mymap {
-  display: none;
-  align-self: center;
+* {
+  overflow-x: hidden;
+  max-height: max-content;
 }
 
 footer {
-  max-height: fit-content;
+  max-height: 250px;
 }
 
+/* table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 75%;
+  margin: auto;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  color: black;
+}
+
+th {
+  background-color: #dddddd;
+} */
+
 @media screen and (max-width: 1024px) {
-  #mymap {
-    display: none;
-    align-self: center;
-    width: '75%';
-    height: '75%';
-    position : 'relative';
+  * {
+    overflow-x: hidden;
   }
+
+  footer {
+    max-height: max-content;
+  }
+
+  #myMap {
+    height: 75%;
+    width: 75%
+  }
+  
 }

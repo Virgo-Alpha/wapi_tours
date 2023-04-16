@@ -2,8 +2,9 @@ import { useState, useEffect, Component } from 'react';
 import {Map, GoogleApiWrapper} from 'google-maps-react';
 import '../cityresults.css'
 
-export const GetApiResults2 = ({citySearch}) => {
+export const GetApiResults2 = ({citySearch, countrySearch}) => {
     // console.log(citySearch);
+    // console.log(countrySearch);
 
     // The following API call gets the city latitude and longitude for the map view
     async function LoadResults() {
@@ -38,10 +39,6 @@ export const GetApiResults2 = ({citySearch}) => {
     const longitude = result['lng'];
     const country = result['country_name'];
 
-    console.log({
-      country: country,
-    })
-
     // Google maps component here
     class MapContainer extends Component {
       render() {
@@ -49,8 +46,8 @@ export const GetApiResults2 = ({citySearch}) => {
         return (
           <Map
             google={this.props.google}
-            zoom={6}
-            style={ {width: '25%', height: '25%', position : 'relative'} }
+            zoom={8}
+            style={ {width: '25%', height: '25%'} }
             initialCenter={{ lat: latitude, lng: longitude}}
             
           />
@@ -71,46 +68,54 @@ export const GetApiResults2 = ({citySearch}) => {
           'X-RapidAPI-Host': 'cost-of-living-and-prices.p.rapidapi.com'
         }
       };
+      myCountry = countrySearch.countrySearch.country;
 
       await fetch(`https://cost-of-living-and-prices.p.rapidapi.com/prices?city_name=${myCity}&country_name=${myCountry}`, options)
         .then(response => response.json())
         .then(response => {
-        //   for (let i = 0; i < response.length; i++) {
-        //     if (response[i]['city_name'] === citySearch.citySearch.city) {
-        //         // setResult(response['cities'][i]);
-        //         console.log(response[i]);
-        //     }
-        // }
-        console.log(response);
-        console.log(myCity);
-        console.log(myCountry);
+        setPriceResult(response);
+        console.log(response);        
         })
         .catch(err => console.error(err));
     }
 
     useEffect(() => {
-      // ! Error is is assignment of country below
       LoadPriceResults(city, country);
     }, []);
+
+    const [priceResult, setPriceResult] = useState([]);
+
+    const Rates = priceResult.exchange_rate;
+    // Make a table with the exchange rates
+
+    console.log(Rates);
+    const prices = priceResult.prices;
+    console.log(prices);
+
+    // iterate over prices to obtain the item, category and avg price in usd
+    // iterate over the exchange rate to obtain the currency and rate
 
     return (
         <div>
           <p>
-          city Name: {city}
+          City Name: {city}
+          <br></br>
           <br></br>
           Latitude: {latitude}
           <br></br>
+          <br></br>
           Longitude: {longitude}
           </p>
-          <br></br>
           <p>
           Country: {country}
           </p>
-          <p id='myMap'>
-            Map
-          <MapContainer />
-          </p>
-        </div>
+          <br></br>
+            <br></br>
+            <MapContainer />
+            
+            <br></br>
+            <br></br>
+      </div>
     )
 }
 

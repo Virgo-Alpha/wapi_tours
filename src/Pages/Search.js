@@ -18,14 +18,16 @@ export const Search = ({setCountrysearch, setCitysearch}) => {
       setCountry({country});
       setCity({city});
       // setCountrysearch({country});
-      if (country !== "") {
+      
+      // navigate('/results')
+      if (city !== "") {
+        setCitysearch({city});
+        setCountrysearch({country});
+        navigate('/cityresults')
+      }
+      else if (country !== "") {
         setCountrysearch({country});
         navigate('/results');
-      }
-      // navigate('/results')
-      else if (city !== "") {
-        setCitysearch({city});
-        navigate('/cityresults')
       }
       else {
         alert("Please enter a country OR a city")
@@ -39,6 +41,7 @@ export const Search = ({setCountrysearch, setCitysearch}) => {
         <label>Search Country:
           <input 
             type="text"
+            required
             value={country}
             onChange={(e) => setCountry(e.target.value)}
           />
@@ -65,6 +68,12 @@ export const Search = ({setCountrysearch, setCitysearch}) => {
     <div className="App-header">
         {/* {result} */}
         <ThisForm />
+        <p>
+          * Searching by Country only gives, statistics position and country dynamics
+        </p>
+        <p>
+          * Searching by both Country and City gives prices of goods and position of the City on a map
+        </p>
     </div>
   );
 }
