@@ -17,9 +17,7 @@ export const Search = ({setCountrysearch, setCitysearch}) => {
       // alert(`Thank you for your country, ${country}!`);
       setCountry({country});
       setCity({city});
-      // setCountrysearch({country});
       
-      // navigate('/results')
       if (city !== "") {
         setCitysearch({city});
         setCountrysearch({country});

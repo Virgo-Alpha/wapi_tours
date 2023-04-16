@@ -3,8 +3,15 @@ import {Map, GoogleApiWrapper} from 'google-maps-react';
 import '../cityresults.css'
 
 export const GetApiResults2 = ({citySearch, countrySearch}) => {
-    // console.log(citySearch);
-    // console.log(countrySearch);
+    console.log("city", citySearch);
+    console.log("country",countrySearch);
+
+    // const StoredCity = JSON.parse(localStorage.getItem('StoredCity'));
+    // const StoredPrices = JSON.parse(localStorage.getItem('StoredPrices'));
+
+    const [result, setResult] = useState([]);
+    const [priceResult, setPriceResult] = useState([]);
+    // const[loading,setLoading] = useState(true);
 
     // The following API call gets the city latitude and longitude for the map view
     async function LoadResults() {
@@ -22,6 +29,7 @@ export const GetApiResults2 = ({citySearch, countrySearch}) => {
          for (let i = 0; i < response.cities.length; i++) {
             if (response['cities'][i]['city_name'] === citySearch.citySearch.city) {
                 setResult(response['cities'][i]);
+                localStorage.setItem('StoredCity', JSON.stringify(response['cities'][i]));
                 console.log(response['cities'][i]);
             }
         }})
@@ -31,8 +39,6 @@ export const GetApiResults2 = ({citySearch, countrySearch}) => {
     useEffect(() => {
       LoadResults();
     }, []);
-
-    const [result, setResult] = useState([]);
 
     const city = citySearch.citySearch.city;
     const latitude = result['lat'];
@@ -47,7 +53,7 @@ export const GetApiResults2 = ({citySearch, countrySearch}) => {
           <Map
             google={this.props.google}
             zoom={8}
-            style={ {width: '25%', height: '25%'} }
+            style={ {width: '25%', height: '25%', position: 'relative'} }
             initialCenter={{ lat: latitude, lng: longitude}}
             
           />
@@ -56,7 +62,7 @@ export const GetApiResults2 = ({citySearch, countrySearch}) => {
     }
 
     MapContainer = GoogleApiWrapper({
-      apiKey: 'AIzaSyBjH_kpDVGSCzIwlUhLRM20tDTL4Tz9_ZM'
+      apiKey: "AIzaSyBjH_kpDVGSCzIwlUhLRM20tDTL4Tz9_ZM"
     })(MapContainer)
 
     // The API call is to compare living prices in the city
@@ -73,50 +79,94 @@ export const GetApiResults2 = ({citySearch, countrySearch}) => {
       await fetch(`https://cost-of-living-and-prices.p.rapidapi.com/prices?city_name=${myCity}&country_name=${myCountry}`, options)
         .then(response => response.json())
         .then(response => {
-        setPriceResult(response);
+        setPriceResult(response.prices);
+        localStorage.setItem('StoredPrices', JSON.stringify(response));
+        // setLoading(false)
         console.log(response);        
         })
         .catch(err => console.error(err));
     }
 
+      console.log("prices", priceResult);
     useEffect(() => {
+
       LoadPriceResults(city, country);
     }, []);
+    
+    function makeTable(data) {
+      const table = document.getElementById('Prices');
+      for (let i = 0; i < data.length; i++) {
+        var row = `<tr>
+                    <td>${data[i].item_name}</td>
+                    <td>${data[i].category_name}</td>
+                    <td>${data[i].max}</td>
+                    </tr>`
+        table.innerHTML += row;
+      }
+    }
 
-    const [priceResult, setPriceResult] = useState([]);
+    makeTable(priceResult);
 
-    const Rates = priceResult.exchange_rate;
-    // Make a table with the exchange rates
-
-    console.log(Rates);
-    const prices = priceResult.prices;
-    console.log(prices);
-
-    // iterate over prices to obtain the item, category and avg price in usd
-    // iterate over the exchange rate to obtain the currency and rate
+    // localStorage.clear();
 
     return (
         <div>
+          <br></br>
+            <br></br>
+            <div>
+            <div>
+            <MapContainer />
+            <p>
+            * Press the word Google in the map
+            </p>
+            
+            </div>
+            <br></br>
+            <br></br>
+            <br></br>
+          <div>
           <p>
           City Name: {city}
           <br></br>
-          <br></br>
-          Latitude: {latitude}
-          <br></br>
-          <br></br>
-          Longitude: {longitude}
-          </p>
           <p>
           Country: {country}
           </p>
           <br></br>
+          Latitude, Longitude: [{latitude}, {longitude}]
+          </p>
+         
+          </div>
+            </div>
+
             <br></br>
-            <MapContainer />
+            <br></br>
+            <h1>
+            Prices of goods and services in {city}, {country}
+            </h1>
+            <br></br>
+            <br></br>
+            <br></br>
+
+            <div>
+              <table>
+                <tr>
+                  <th>Item</th>
+                  <th>Category</th>
+                  <th>Price in KES</th>
+                </tr>
+                <tbody id='Prices'>
+                </tbody>
+              </table>
+              <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             
-            <br></br>
-            <br></br>
+            </div>
       </div>
     )
+    
 }
 
 export default GetApiResults2;

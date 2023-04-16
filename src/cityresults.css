@@ -7,7 +7,7 @@ footer {
   max-height: 250px;
 }
 
-/* table {
+table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 75%;
@@ -23,7 +23,7 @@ td, th {
 
 th {
   background-color: #dddddd;
-} */
+}
 
 @media screen and (max-width: 1024px) {
   * {
@@ -32,11 +32,6 @@ th {
 
   footer {
     max-height: max-content;
-  }
-
-  #myMap {
-    height: 75%;
-    width: 75%
   }
   
 }
