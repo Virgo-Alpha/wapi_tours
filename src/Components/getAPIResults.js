@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 export const GetApiResults = ({countrySearch}) => {
     console.log(countrySearch);
-    function LoadResults() {
+    async function LoadResults() {
         // Code for loading results
       const options = {
         method: 'GET',
@@ -12,7 +12,7 @@ export const GetApiResults = ({countrySearch}) => {
         }
       };
       
-      fetch('https://country-facts.p.rapidapi.com/all', options)
+      await fetch('https://country-facts.p.rapidapi.com/all', options)
         .then(response => response.json())
         .then(response => {
             //setResult(response[0].name.common);
@@ -58,7 +58,9 @@ export const GetApiResults = ({countrySearch}) => {
     const flag = result.flag;
 
     // ! To be uncommented when using the API
-    useEffect(() => {LoadResults()});
+    useEffect(() => {
+        LoadResults();
+    }, []);
   
     return (
         <div>

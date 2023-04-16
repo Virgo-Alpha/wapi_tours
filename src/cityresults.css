@@ -1,0 +1,18 @@
+#mymap {
+  display: none;
+  align-self: center;
+}
+
+footer {
+  max-height: fit-content;
+}
+
+@media screen and (max-width: 1024px) {
+  #mymap {
+    display: none;
+    align-self: center;
+    width: '75%';
+    height: '75%';
+    position : 'relative';
+  }
+}
