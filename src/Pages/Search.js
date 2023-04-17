@@ -67,7 +67,7 @@ export const Search = ({setCountrysearch, setCitysearch}) => {
         {/* {result} */}
         <ThisForm />
         <p>
-          * Searching by Country only gives, statistics position and country dynamics
+          * Searching by Country only gives the statistics, position and country dynamics
         </p>
         <p>
           * Searching by both Country and City gives prices of goods and position of the City on a map

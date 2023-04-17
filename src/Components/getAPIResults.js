@@ -15,14 +15,14 @@ export const GetApiResults = ({countrySearch}) => {
       await fetch('https://country-facts.p.rapidapi.com/all', options)
         .then(response => response.json())
         .then(response => {
-            //setResult(response[0].name.common);
+            
             for (let i = 0; i < response.length; i++) {
                 if (response[i]['name']['common'] === countrySearch.country) {
                     setResult(response[i]);
                     console.log(response[i]);
                 }
             }}
-            // console.log(response)
+            
                 )
         .catch(err => console.error(err));
     }
@@ -30,27 +30,8 @@ export const GetApiResults = ({countrySearch}) => {
 
     const [result, setResult] = useState([]);
 
-    // To be used instead of the API when testing
-    // const setter = () =>  {
-    //     setResult(
-    //         {
-    //             // "name": {"countryName": "Kenya"},
-    //             "capital": 'Nairobi',
-    //             "region": "Africa",
-    //             "subregion": "Eastern Africa",
-    //             "population": 53771296,
-    //             "flag": "https://res.cloudinary.com/dt5gwt7vu/image/upload/v1633148961/flags/ken.svg"
-    //         });
-    
-    // }
-
     const countryName = countrySearch.country;
 
-    // for(let i = 0; i < country.length; i++) {
-    //     countryName.push(country[i]);
-    // }
-    
-    // const countryName = country; // Set to name user inputs
     const capital = result.capital;
     const region = result.region;
     const subregion = result.subregion;
@@ -64,7 +45,6 @@ export const GetApiResults = ({countrySearch}) => {
   
     return (
         <div>
-            {/* {result} */}
             <p>
                 Country's Name:
                 {countryName}
